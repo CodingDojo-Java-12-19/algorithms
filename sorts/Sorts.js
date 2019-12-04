@@ -39,4 +39,23 @@ function selectionSort(arr){
     }
     return arr
 }
-console.log(selectionSort([1,5,3,6,7,2,10]))
+// console.log(selectionSort([1,5,3,6,7,2,10]))
+
+// Array: Insertion Sort
+// Create a function that InsertionSort to sort an unsorted array in-place. What is the run-time complexity? What is the space complexity?
+
+function insertionSort(arr) {
+    for(let i = 1; i < arr.length; i++) {
+        let j = i-1;
+        const lowVal = arr[i];
+        if(arr[j] > lowVal) {
+            while(arr[j] > lowVal) {
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = lowVal;
+        }
+    }
+    return arr;
+}
+console.log(insertionSort([1,5,3,6,7,2,10]));
