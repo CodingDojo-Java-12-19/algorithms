@@ -19,7 +19,6 @@ function bubbleSort(arr) {
 
 function swap (arr, one, two) {
     let temp = arr[one];
-    
     arr[one] = arr[two]
     arr[two] = temp;
 }
@@ -58,4 +57,56 @@ function insertionSort(arr) {
     }
     return arr;
 }
-console.log(insertionSort([1,5,3,6,7,2,10]));
+// console.log(insertionSort([1,5,3,6,7,2,10]));
+
+// Array: Combine
+// Create function combineArrs(arr1,arr2) that sorts two already separately sorted arrays, 
+// placing the result back into the first provided array. Can you work completely in-place?
+
+// function combineArrs(arr1, arr2) {
+//     let newArr = [];
+//     let i = 0;
+//     let j = 0;
+//     let isCombined = false;
+//     while(i < arr1.length && j < arr2.length) {
+//         if(arr1[i] > arr2[j]){
+//             newArr.push(arr2[j]);
+//             j++;
+//         } else {
+//             newArr.push(arr1[i]);
+//             i++;
+//         }
+//     }
+//     while(i < arr1.length) {
+//         newArr.push(arr1[i++]);
+//     }
+//     while(j < arr2.length) {
+//         newArr.push(arr2[j++]);
+//     }
+//     console.log(newArr);
+
+// }
+// console.log(combineArrs([1,3,5,7,9], [2,4,6,8,10]))
+
+function combineArrs(arr1, arr2) {
+    let i = 0;
+    let j = 0;
+    let isCombined = false;
+    while(i < arr1.length && j < arr2.length) {
+        if(arr1[i] > arr2[j]){
+            for(let k = arr1.length; k > i; k--) {
+                arr1[k] = arr1[k-1];
+            }
+            arr1[i] = arr2[j];
+            j++;
+        } else {
+            i++;
+        }
+    }
+    while(j < arr2.length) {
+        arr1.push(arr2[j++]);
+    }
+    console.log(arr1);
+
+}
+console.log(combineArrs([1,3,5,7,9], [2,4,6,8,10]))
